@@ -2,6 +2,7 @@ package de.stevenschwenke.java.testdatagenerator.testdatagenerator;
 
 import com.google.common.collect.ImmutableMap;
 import de.stevenschwenke.java.testdatagenerator.testdatagenerator.configs.TestDataConfig;
+import de.stevenschwenke.java.testdatagenerator.testdatagenerator.randoms.PseudoRandoms;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,7 @@ public class TestDataGenerator {
 
         LOG.info("Generating specified data ...");
         TestDataConfig testDataConfig = (TestDataConfig) DATA_CONFIG_CLASS.getConstructor().newInstance();
-        entityFactory.generateData(testDataConfig);
+        entityFactory.generateData(testDataConfig, new PseudoRandoms());
         LOG.info("Data generated successfully");
     }
 

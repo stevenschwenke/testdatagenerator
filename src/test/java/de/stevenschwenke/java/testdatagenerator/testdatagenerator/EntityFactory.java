@@ -5,6 +5,7 @@ import de.stevenschwenke.java.testdatagenerator.address.AddressRepository;
 import de.stevenschwenke.java.testdatagenerator.person.Person;
 import de.stevenschwenke.java.testdatagenerator.person.PersonRepository;
 import de.stevenschwenke.java.testdatagenerator.testdatagenerator.configs.TestDataConfig;
+import de.stevenschwenke.java.testdatagenerator.testdatagenerator.randoms.PseudoRandoms;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,16 @@ public class EntityFactory {
         this.addressRepository = addressRepository;
     }
 
-    public void generateData(TestDataConfig dataConfig) {
+    public void generateData(TestDataConfig dataConfig, PseudoRandoms pseudoRandoms) {
 
-        generateAddresses(dataConfig.getAmountAddresses());
+        generateAddresses(dataConfig.getAmountAddresses(), pseudoRandoms);
         generatePersons(dataConfig.getAmountPersons());
 
     }
 
-    private void generateAddresses(int amountAddresses) {
+    private void generateAddresses(int amountAddresses, PseudoRandoms pseudoRandoms) {
         for (int i = 0; i < amountAddresses; i++) {
-            Address newAddress = new Address("City" + i, "Street" + i, (long) i);
+            Address newAddress = new Address("City" + i, "Street" + i, (long) (pseudoRandoms.randomDouble() * 100));
             addressRepository.save(newAddress);
         }
     }
