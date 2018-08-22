@@ -1,10 +1,14 @@
 package de.stevenschwenke.java.testdatagenerator.person;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.stevenschwenke.java.testdatagenerator.address.Address;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Person {
 
     @Id
@@ -14,6 +18,9 @@ public class Person {
     @Column
     @NotNull
     private String name;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Address address;
 
     public Person() {
     }
@@ -36,6 +43,14 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override

@@ -28,22 +28,27 @@ public class EntityFactory {
 
     public void generateData(TestDataConfig dataConfig) {
 
-        generateIdeas(dataConfig.getAmountPersons());
         generateAddresses(dataConfig.getAmountAddresses());
+        generatePersons(dataConfig.getAmountPersons());
 
-    }
-
-    private void generateIdeas(int amountPersons) {
-        for (int i = 0; i < amountPersons; i++) {
-            Person newPerson = new Person("Android" + i);
-            personRepository.save(newPerson);
-        }
     }
 
     private void generateAddresses(int amountAddresses) {
         for (int i = 0; i < amountAddresses; i++) {
             Address newAddress = new Address("City" + i, "Street" + i, (long) i);
             addressRepository.save(newAddress);
+        }
+    }
+
+    private void generatePersons(int amountPersons) {
+        for (int i = 0; i < amountPersons; i++) {
+            Person newPerson = new Person("Android" + i);
+
+            long amountAddresses = addressRepository.count();
+            Address address = addressRepository.findAll().get((int) (Math.random() * amountAddresses));
+            newPerson.setAddress(address);
+
+            personRepository.save(newPerson);
         }
     }
 
