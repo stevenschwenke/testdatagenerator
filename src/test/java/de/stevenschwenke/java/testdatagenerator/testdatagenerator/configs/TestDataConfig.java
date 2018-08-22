@@ -9,4 +9,7 @@ public class TestDataConfig {
         return 4;
     }
 
+    public int getAmountAddresses() {
+        return 4;
+    }
 }

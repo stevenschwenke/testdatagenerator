@@ -1,6 +1,7 @@
 package de.stevenschwenke.java.testdatagenerator.person;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -11,6 +12,7 @@ public class Person {
     private Long id;
 
     @Column
+    @NotNull
     private String name;
 
     public Person() {
