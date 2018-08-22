@@ -1,0 +1,17 @@
+Most applications sooner or later need test data to be tested thoroughly. Often, anonymized existing data is used. This is not a good decision because:
+
+1. Legal issues: Is the data allowed to be used in another context?
+1. De-Anonymization: It's hard to remove all hints from the data that lead to the original data without making it unusable for testing.
+1. Scalability: Existing data cannot be scaled to smaller or bigger data volume, for example to allow for performance testing with huge sets of data.
+1. Configurability: To test for example special cases, it's necessary to have according data. That sometimes cannot be found in existing data sets.
+
+A solution to these issues is to generate synthesized data instead of using anonymized data.
+
+This repository demonstrates the implementation of a test data generator with the following features:
+
+- usage of existing database configuration
+- no danger of accidentally executing generator in production because of test-scope
+- different data configurations
+- deterministic mode on/off
+- pseudo-random numbers
+- random designations
