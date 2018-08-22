@@ -5,6 +5,10 @@ package de.stevenschwenke.java.testdatagenerator.testdatagenerator.configs;
  */
 public class TestDataConfig {
 
+    public boolean generateDeterministicDesignations() {
+        return false;
+    }
+
     public int getAmountPersons() {
         return 4;
     }
