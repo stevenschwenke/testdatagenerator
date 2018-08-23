@@ -12,8 +12,8 @@ import java.util.stream.Stream;
 
 /**
  * To test an application's calculating algorithms, random numbers can be necessary. However, these numbers have to be
- * deterministic when called multiple times. That's why simply calling Math.random() is not enough. Instead, this
- * class provides pseudo-random numbers.
+ * deterministic when called multiple times. java.util.Random, provided with a seed, could do that. However, saving
+ * a list of the pseudo-random numbers that can be stored in version control makes the process more transparent.
  */
 public class PseudoRandoms {
 
