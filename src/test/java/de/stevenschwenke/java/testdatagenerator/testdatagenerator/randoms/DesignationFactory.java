@@ -11,9 +11,8 @@ import java.util.Locale;
 public class DesignationFactory {
 
     /**
-     * true, wenn die vom Generator erzeugten Entitaeten auch bei mehrfacher Ausfuehrung deterministische
-     * Bezeichnungen haben sollen. Dies ist z.B. zum Testen von Importfunktionen sinnvoll, damit die zu
-     * importierende Datei nur einmal auf die vom Generator erstellten Entitaeten angepasst werden muss.
+     * true, if the generated entities should have deterministic designations even after multiple runs. Important
+     * for import functionality from existing systems, so that the import data have to be adapted only once.
      */
     private boolean deterministicDesignations;
 
